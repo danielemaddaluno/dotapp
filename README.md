@@ -65,3 +65,10 @@ public class YourMainClass {
 	}
 }
 ```
+
+### 4. Speed up the process
+You can skip this step, this is only to speed up the process of generating the .app.
+Install the "Eclipse CDT (C/C++ Development Tooling)" from the eclipse marketplace.
+Now you can run multiple configurations sequentially. Open the "Run Configurations..." window.
+Configure a Launch Group configuration as follows:<br><br>
+![MultipleConfigurations](images/MultipleConfigurations.png)
