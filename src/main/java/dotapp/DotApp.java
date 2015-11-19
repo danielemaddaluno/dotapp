@@ -15,15 +15,18 @@ import org.apache.tools.ant.types.FileSet;
 public class DotApp {
 	private final static String RESOURCE_FOLDER = "src/main/resources/";
 
-	private static final String EXECUTABLE_JAR_PLACEHOLDER = "EXECUTABLE_JAR_NAME";
+	private static final String EXEC_JAR_PLACEHOLDER = "EXECUTABLE_JAR_NAME";
+	private static final String APP_NAME_PLACEHOLDER = "APPLICATION_NAME";
+	private static final String VM_ARGS_PLACEHOLDER  = "VIRTUAL_MACHINE_ARGS";
 	private static final String SAMPLE_COPY_NAME = "SampleCopy";
 
-	private String app_name = "IBM";
-	private String executable_jar = "src/main/resources/input/Finance-1.0.0.BUILD-SNAPSHOT.jar";
-	private String resources = "src/main/resources/input/resources";
-	private String icons = "src/main/resources/input/application.icns";
-	private String output_folder = "out";
-
+	private String app_name;
+	private String executable_jar;
+	private String resources;
+	private String icons;
+	private String output_folder;
+	private String virtual_machine_args;
+	
 	public DotApp setResourcesPath(String resources){
 		this.resources = resources;
 		return this;
@@ -49,6 +52,10 @@ public class DotApp {
 		return this;
 	}
 
+	public DotApp setVirtualMachineArgs(String virtual_machine_args){
+		this.virtual_machine_args = virtual_machine_args;
+		return this;
+	}
 
 	public void execute() {
 		App resource_app =  new App(new File(RESOURCE_FOLDER), SAMPLE_COPY_NAME);
@@ -78,8 +85,11 @@ public class DotApp {
 			// Copy the launcher
 			InputStreamReader launcher_stream = new InputStreamReader(new FileInputStream(resource_app.contents.macos.launcher));
 			String launcher_string = IOUtils.toString(launcher_stream);
-			launcher_string = launcher_string.replace(EXECUTABLE_JAR_PLACEHOLDER, source_jar.getName());
-
+			launcher_string = launcher_string.replace(EXEC_JAR_PLACEHOLDER, source_jar.getName());
+			launcher_string = launcher_string.replace(APP_NAME_PLACEHOLDER, app_name);
+			launcher_string = launcher_string.replace(VM_ARGS_PLACEHOLDER, virtual_machine_args==null ? "" : virtual_machine_args);
+			
+			
 			FileUtils.writeStringToFile(new_app.contents.macos.launcher, launcher_string);
 			System.out.println(launcher_string);
 

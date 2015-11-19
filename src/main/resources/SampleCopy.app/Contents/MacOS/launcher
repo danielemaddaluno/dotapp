@@ -1,6 +1,10 @@
 #!/bin/sh
 # Author: Daniele Maddaluno
 
+APP_JAR="EXECUTABLE_JAR_NAME"
+APP_NAME="APPLICATION_NAME"
+VM_ARGS="VIRTUAL_MACHINE_ARGS"
+
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
-java -jar EXECUTABLE_JAR_NAME
+java $VM_ARGS -Dapple.laf.useScreenMenuBar=true -Dcom.apple.macos.use-file-dialog-packages=true -Xdock:name="$APP_NAME" -Xdock:icon="$DIR/../Resources/application.icns" -cp ".;$DIR;" -jar "$DIR/$APP_JAR"
