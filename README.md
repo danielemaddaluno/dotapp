@@ -5,7 +5,7 @@
 ## Quick Setup
 
 ### 1. Create an executable fat jar for your project:
-**Add shade plugin to your pom.xml file and replace the ADD_HERE_JAVA_MAIN_CLASS_WITH_COMPLETE_CLASS_PATH string with your own, e.g. com.madx.ExampleMainClass. For a more detailed tutorial follow these two links: http://stackoverflow.com/a/13943824/3138238 and http://www.mkyong.com/maven/create-a-fat-jar-file-maven-shade-plugin/**<br>
+**Add shade plugin to your pom.xml file and replace the JAVA_MAIN_CLASS_WITH_PACKAGE string with your own, e.g. com.madx.ExampleMainClass. For a more detailed tutorial follow these two links: http://stackoverflow.com/a/13943824/3138238 and http://www.mkyong.com/maven/create-a-fat-jar-file-maven-shade-plugin/**<br>
 ``` xml
 <dependencies>
 ...
@@ -32,7 +32,7 @@
                         <resource>META-INF/spring.schemas</resource>
                      </transformer>
                      <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                        <mainClass>ADD_HERE_JAVA_MAIN_CLASS_WITH_COMPLETE_CLASS_PATH</mainClass>
+                        <mainClass>JAVA_MAIN_CLASS_WITH_PACKAGE</mainClass>
                      </transformer>
                   </transformers>
                </configuration>
@@ -67,8 +67,9 @@ public class YourMainClass {
 ```
 
 ### 4. Speed up the process
-You can skip this step, this is only to speed up the process of generating the .app.
-Install the "Eclipse CDT (C/C++ Development Tooling)" from the eclipse marketplace.
-Now you can run multiple configurations sequentially. Open the "Run Configurations..." window.
+You can skip this step, this is only to speed up the process of generating the .app.<br>
+Install the "Eclipse CDT (C/C++ Development Tooling)" from the eclipse marketplace.<br>
+After the installation you can run multiple configurations sequentially.<br>
+Open the "Run Configurations..." window.<br>
 Configure a Launch Group configuration as follows:<br><br>
 ![MultipleConfigurations](images/MultipleConfigurations.png)
