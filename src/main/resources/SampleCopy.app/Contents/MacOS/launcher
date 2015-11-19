@@ -1,0 +1,6 @@
+#!/bin/sh
+# Author: Daniele Maddaluno
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd ${DIR}
+java -jar EXECUTABLE_JAR_NAME
