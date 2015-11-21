@@ -94,6 +94,7 @@ public class DotApp {
 			System.out.println(launcher_string);
 
 			// Set launcher permissions, convert it in a unix executable file
+			// It equivalent to execute "chmod +x launcher" on the launcher
 			// http://stackoverflow.com/questions/664432/how-do-i-programmatically-change-file-permissions/20592571#20592571
 			Chmod chmod = new Chmod();
 			chmod.setProject(new Project());
